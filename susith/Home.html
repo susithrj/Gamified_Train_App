@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <link href="./Index.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div data-role="page" id="HomePage">
+
+    <div data-role="header" data-position="fixed">
+
+      <div class="ui-grid-b">
+        <div class="ui-block-a">
+          <!-- status bar goes here -->
+        </div>
+        <!-- logo+Hamburger -->
+        <div class="ui-block-b">
+          <a href="#home" class="ui-btn-icon-center"><img src="icons/logoRfixed.png"></a>
+        </div>
+        <div class="ui-block-c" style="padding-left: 80px; padding-top: 8px;">
+          <a href="#home" class="hamburger-menu-icon-right"><img src="icons/2x/baseline_menu_white_18dp.png">
+          </a>
+        </div>
+      </div> <!-- ui-grid-b -->
+      <nav data-role="navbar">
+        <ul class="navbar-ul">
+          <li><a href="#" class="ui-btn ui-icon-home ui-btn-icon-center  ui-btn-icon-notext ui-state-persist"></a></li>
+          <li><a href="#" class="ui-btn ui-icon-grid ui-btn-icon-center ui-btn-icon-notext "></a></li>
+          <li><a href="#Page2" data-transition="flip" class="ui-btn ui-icon-heart ui-btn-icon-center ui-btn-icon-notext"></a></li>
+          <li><a href="#" class="ui-btn ui-icon-user ui-btn-icon-ccenter ui-btn-icon-notext"></a></li>
+        </ul>
+      </nav>
+    </div> <!-- /header -->
+
+    <div role="main" class="ui-content" data-position="fixed">
+
+      <div data-role="content" data-position="fixed" style="text-align: center;">
+        <h1> Trains at your <br/> fingertips</h1>
+      </div>
+
+      <!-- search train -->
+      <!-- <div data-role="data-filter-placeholder"  data-filter="true" data-filter-placeholder="Arrival Station" data-inset="true"> -->
+        
+        <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Arrival Station"
+        data-inset="true">
+            <li><a href="#">Anuradhapura</a></li>
+            <li><a href="#">Galle</a></li>
+            <li><a href="#">Colombo</a></li>
+            <li><a href="#">Negombo</a></li>
+            <li><a href="#">Gampaha</a></li>
+            <li><a href="#">Trincomalee</a></li>
+      </ul>
+      <ul class="ArrivalStation" data-role="listview" data-filter="true" data-filter-reveal="true"
+        data-filter-placeholder="Depature Station" data-inset="true">
+            <li><a href="#">Anuradhapura</a></li>
+            <li><a href="#">Galle</a></li>
+            <li><a href="#">Colombo</a></li>
+            <li><a href="#">Negombo</a></li>
+            <li><a href="#">Gampaha</a></li>
+            <li><a href="#">Trincomalee</a></li>
+      </ul>
+      
+      <label for="date">Select Date :</label>
+      <input type="date" name="date" id="datepicker" value="" />
+
+      <!-- no of tickets -->
+      <form>
+            <label style="margin-bottom: 0px;">No of Tickets</label>
+            <input type="range" style="margin-top:0px;" name="slider-ticket" id="slider-ticket" data-highlight="true"
+          min="0" max="10" value="1">
+      </form>
+
+      <a href="#" class="ui-btn-1" data-role="button" input type="submit" value="Submit"
+        style="margin-top: 50px;">Search Trains</a>
+
+
+      <div data-role="content" data-position="fixed">
+        <h1>Get Inspired</h1>
+        <h5> Have a look at our most famous destinations <br /> for travel </h5>
+      </div>
+
+      <!-- Load images (image slider) -->
+
+      <img src="images/v82_2708F.png" class="ui-li-thumb">
+
+
+    </div>
+
+    <div data-role="footer">
+      <div class="Footer-img"> <img src="images/Footer-imgFixed.png"></div>
+
+
+    </div>
+
+  </div> <!-- page1 -->
+
+
+<!-- This is page 2-->
+<div data-role="page2" id="Page2">
+  <!-- jQuery Mobile page content goes here -->
+  
+   <div data-role="header">
+    <h4> Header page 2</h4>
+    <a href="#Page1">This is a link to page 1</a>
+   </div>
+
+  <div role="main" class="ui-content">
+    <p> This is the main content of Page 2</p>
+   
+  </div>
+
+  
+  <div data-role="footer">
+    <h1>this is footer</h1>
+
+  </div>
+</div> <!-- /page2 -->
+
+
+
+</body>
+
+
+</html>

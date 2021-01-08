@@ -1,0 +1,43 @@
+.ui-page { 
+    background: linear-gradient(rgb(45, 15, 165), rgba(11,4,79,0.7099999785423279));
+}
+ .ui-header {
+    background: linear-gradient(rgb(7, 1, 32), rgba(11,4,79,0.7099999785423279));
+}
+
+
+
+div ul.navbar-ul li  a{
+   
+    background: linear-gradient(rgba(10,3,80,1), rgba(11,4,79,0.7099999785423279));
+    width: 92px;
+    height: 45px;
+    border-radius: 6px;
+   
+}
+
+
+.ui-btn,
+label.ui-btn {
+	font-weight: bold;
+	border-width: 1px;
+	border-style: solid;
+}
+.ui-btn {
+	text-decoration: none !important;
+}
+.ui-btn-active {
+	cursor: pointer;
+}
+
+
+ 
+
+h1 {
+    color: white; 
+  }
+
+
+
+
+
