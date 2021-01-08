@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+ 
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link href="./Index.css" rel="stylesheet" />
+</head>
+  
+<body>
+ 
+	
+	<!-- This is page 1-->
+		<div data-role="page" id="Page1">
+		<!-- jQuery Mobile page content goes here -->
+		
+        <div data-role="header" data-position="fixed">
+
+            <div class="ui-grid-b">
+              <div class="ui-block-a">
+                <!-- status bar goes here -->
+              </div>
+              <!-- logo+Hamburger -->
+              <div class="ui-block-b">
+                <a href="#home" class="ui-btn-icon-center"><img src="icons/logoRfixed.png"></a>
+              </div>
+              <div class="ui-block-c" style="padding-left: 80px; padding-top: 8px;">
+                <a href="#home" class="hamburger-menu-icon-right"><img src="icons/2x/baseline_menu_white_18dp.png">
+                </a>
+              </div>
+            </div> <!-- ui-grid-b -->
+            <nav data-role="navbar">
+              <ul class="navbar-ul">
+                <li><a href="#" class="ui-btn ui-icon-home ui-btn-icon-center  ui-btn-icon-notext ui-state-persist"></a></li>
+                <li><a href="#" class="ui-btn ui-icon-grid ui-btn-icon-center ui-btn-icon-notext "></a></li>
+                <li><a href="#" data-transition="flip" class="ui-btn ui-icon-heart ui-btn-icon-center ui-btn-icon-notext"></a></li>
+                <li><a href="#" class="ui-btn ui-icon-user ui-btn-icon-ccenter ui-btn-icon-notext"></a></li>
+              </ul>
+            </nav>
+          </div> <!-- /header -->
+
+		<div role="main" class="ui-content">
+			
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+            <div class="Footer-img"> <img src="images/Footer-imgFixed.png"></div>
+            
+
+
+		</div>
+	</div> <!-- / fav page -->
+	
+
+	<!-- This is page 2 (use this after click email)-->
+		<div data-role="page" id="Page2">
+	
+		 <div data-role="header">		
+			<nav data-role="navbar">
+            
+          </nav>
+
+		 </div>
+
+		<div role="main" class="ui-content">
+			
+		</div>
+
+		<div data-role="footer">
+			<a href="#" class="ui-btn">Button 1</a>
+			<a href="#" class="ui-btn">Button 2</a>
+			<a href="#" class="ui-btn-right">Button 3</a>
+
+		</div>
+		<div data-role="footer">
+			
+		</div>
+	</div> <!-- /page -->
+
+</body>
+
+</html>
+
