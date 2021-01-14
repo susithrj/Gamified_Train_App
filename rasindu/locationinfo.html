@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="./css/main.css" rel="stylesheet" />
+
+
+    <script type="text/javascript" src="./js/jQuery.countdownTimer.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/jQuery.countdownTimer.css" />
+
+</head>
+
+
+<body>
+    <div data-role="page" id="locationinfo">
+
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-update-page-padding="false">
+
+            <div class="ui-grid-b">
+
+                <div class="ui-block-a">
+
+                </div>
+                <div class="ui-block-b">
+                    <a href="#locationInfo" class="ui-btn-icon-center"><img src="icons/logo.png"></a>
+                </div>
+                <div class="ui-block-c" style="padding-left: 80px;">
+                    <a style="background-color:#0B0451;border: none;" href="#panelArea"
+                        class="ui-btn ui-btn-inline ui-icon-bars ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                </div>
+            </div>
+
+            <div data-role="navbar" data-iconpos="left" class="navBar">
+                <ul class="mainNAV">
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-home ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-grid ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-heart ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-user ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ui-grid-b">
+
+                <div class="ui-block-a" style="width: 22%;padding-top: 6px;">
+                    <div style="width:98%;" id="s_timer"></div>
+                </div>
+
+                <div class="ui-block-b" style="width:62%;">
+                    <h1 id="subHeaderQuiz" style="font-size:18px;">LOCATION INFO</h1>
+                </div>
+
+                <div class="ui-block-c"></div>
+
+            </div>
+
+        </div>
+
+
+        <div data-role="main" class="ui-content">
+
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <!-- <p style="color:whitesmoke;">Seegiriya</p>
+                    <p style="color: white;font-family: system-ui;font-weight: normal">Seegiriya today is a UNESCO
+                        listed world heritage Site </p> -->
+
+                     <div class="ui-body ui-body-a ui-corner-all" style="background:none;border: none;">
+                        <h3 style="margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal"
+                            id="locationName"></h3>
+                              <p style="margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal"
+                            id="locationDes"></p>
+                    </div>
+
+                </div>
+                <div class="ui-block-b" id="imgContent">
+                    <!-- <a href="#" id="locationImg"><img style="border-radius: 50%; width: 150px;height: 150px;" src="icons/s1.png"></a> -->
+                </div>
+            </div>
+
+            <div class="ui-grid-solo">
+                <div class="ui-block-a">
+
+                     <div class="ui-body ui-body-a ui-corner-all"
+                        style="background-color: transparent;opacity: 0.9;box-shadow: 0px 4px 5px -3px #888;">
+                        <h3 style="margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal">Some more
+                            info . . .</h3>
+                              <p id="locationMoreInfo"
+                            style="margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal"></p>
+                    </div>
+
+                </div>
+            </div>
+
+            <button class="ui-btn ui-corner-all" id="btnContinue" onclick="location.href='quiz01.html'"
+                style="margin-top: 20px;;">Continue</button>
+
+        </div>
+
+        <div data-role="footer">
+            <div class="Footer-img"> <img src="../CW/css/images/Footer-imgFixed.png"></div>
+        </div>
+
+    </div>
+
+
+    <script>
+        // localStorage.gameover=false;
+        // localStorage.locationId = 1;
+        if (localStorage.locationId == 1) {
+            $("#locationName").text("SEEGIRIYA");
+            $("#locationDes").text("Seegiriya today is a UNESCO listed world heritage site");
+            $("#locationMoreInfo").text("Sigiriya or Sinhagiri is an ancient rock fortress located in the northern Matale District near the town of Dambulla in the Central Province, Sri Lanka. The name refers to a site of historical and archaeological significance that is dominated by a massive column of rock nearly 200 metres high.");
+
+            var container = document.getElementById('imgContent');
+            var aTag = document.createElement('a');
+            var img = document.createElement('img');
+
+            img.src = "icons/s1.png";
+            img.style.width = '150px';
+            img.style.height = '150px';
+            img.style.borderRadius = '50%';
+
+            aTag.appendChild(img);
+            container.appendChild(aTag);
+
+        } else if (localStorage.locationId == 2) {
+            $("#locationName").text("NALANDA GEDIGE");
+            $("#locationDes").text("Nalanda Gedige is an ancient complete stone temple near Matale");
+            $("#locationMoreInfo").text("Sri Lanka and its original site was considered as the center of Sri Lanka. The building was constructed in between 8th and 10th centuries with dravidian architecture inand is believed to have been used by Buddhists.");
+
+            var container = document.getElementById('imgContent');
+            var aTag = document.createElement('a');
+            var img = document.createElement('img');
+
+            img.src = "icons/nalandaGedige.png";
+            img.style.width = '150px';
+            img.style.height = '150px';
+            img.style.borderRadius = '50%';
+
+            aTag.appendChild(img);
+            container.appendChild(aTag);
+        } else if (localStorage.locationId == 3) {
+            $("#locationName").text("ADAMS PEAK");
+            $("#locationDes").text("Adam's Peak is a 2,243 m tall conical mountain located in central Sri Lanka");
+            $("#locationMoreInfo").text("It is well known for the Sri Pada , i.e., sacred footprint, a 1.8 m (5 ft 11 in) rock formation near the summit, which in Buddhist tradition is held to be the footprint of the Buddha. Moreover, for Buddhists, the footprint mark is the left foot of the Buddha, left behind when Buddha visited Sri Lanka, as a symbol for worship at the invitation of Buddhist God Saman.");
+
+            var container = document.getElementById('imgContent');
+            var aTag = document.createElement('a');
+            var img = document.createElement('img');
+
+            img.src = "icons/adamsPeak.png";
+            img.style.width = '150px';
+            img.style.height = '150px';
+            img.style.borderRadius = '50%';
+
+            aTag.appendChild(img);
+            container.appendChild(aTag);
+        } else {
+            $("#locationName").text("TEMPLE OF TOOTH");
+            $("#locationDes").text("Well known for Sri Dalada Maligawa is a Buddhist temple in the city of Kandy, Sri Lanka");
+            $("#locationMoreInfo").text("After the parinirvana of Gautama Buddha, according to the legend, the tooth relic was preserved in Kalinga and smuggled to the island by Princess Hemamali and her husband, Prince Dantha on the instructions of her father King Guhasiva.");
+
+            var container = document.getElementById('imgContent');
+            var aTag = document.createElement('a');
+            var img = document.createElement('img');
+
+            img.src = "icons/templeOfTooth.png";
+            img.style.width = '150px';
+            img.style.height = '150px';
+            img.style.borderRadius = '50%';
+
+            aTag.appendChild(img);
+            container.appendChild(aTag);
+        }
+
+
+
+        $(function () {
+            $("#s_timer").countdowntimer({
+                seconds: 15,
+                size: "sm"
+            });
+        });
+
+        $(document).on("DOMSubtreeModified", "#s_timer", function () {
+           var countDownValue=$('#s_timer').text();
+
+           if(countDownValue=="00:00:00"){
+               console.log("Rasindu De Alwis");
+               location.href='score.html';
+               localStorage.gameover='1';
+           }
+           
+        });
+
+
+    </script>
+
+
+</body>
+
+
+</html>
+
+
+
+
+
+
+<!-- <a href="#" id="locationImg"><img style="border-radius: 50%; width: 150px;height: 150px;" src="icons/s1.png"></a> -->

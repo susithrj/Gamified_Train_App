@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="./css/main.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="./js/jQuery.countdownTimer.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/jQuery.countdownTimer.css"/>
+
+</head>
+
+
+<body>
+    <div data-role="page" id="quiz01">
+
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-update-page-padding="false">
+
+            <div class="ui-grid-b">
+
+                <div class="ui-block-a">
+
+                </div>
+                <div class="ui-block-b">
+                    <a href="#locationInfo" class="ui-btn-icon-center"><img src="icons/logo.png"></a>
+                </div>
+                <div class="ui-block-c" style="padding-left: 80px;">
+                    <a style="background-color:#0B0451;border: none;" href="#panelArea"
+                        class="ui-btn ui-btn-inline ui-icon-bars ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                </div>
+            </div>
+
+            <div data-role="navbar" data-iconpos="left" class="navBar">
+                <ul class="mainNAV">
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-home ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-grid ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-heart ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-user ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <h1 id="subHeaderQuiz" style="padding-left: 60px;">Quiz</h1> -->
+
+            <div class="ui-grid-b">
+
+                <div class="ui-block-a" style="width: 22%;padding-top: 6px;">
+                    <div style="width:98%;" id="s_timer"></div>
+                </div>
+
+                <div class="ui-block-b" style="width:62%;">
+                    <h1 id="subHeaderQuiz" style="font-size:18px;padding-left: 28px;">QUIZ</h1>
+                </div>
+
+                <div class="ui-block-c"></div>
+            
+            </div>
+
+        </div>
+
+
+        <div data-role="main" class="ui-content">
+
+            <h4 id="quizInfoText">Select images related to
+                the location</h4>
+
+            <div class="ui-grid-a" id="imageContainer"></div>
+
+            <button class="ui-btn ui-corner-all" id="btnContinue"
+                onclick="location.href='quiz02.html'">Continue</button>
+
+        </div>
+
+        <div data-role="panel" id="panelArea" data-display="overlay" data-position="left">
+            <p>Hellow, Rasindu....</p>
+        </div>
+
+
+        <div data-role="footer">
+            <div class="Footer-img"> <img src="../CW/css/images/Footer-imgFixed.png"></div>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("btnContinue").disabled = true;
+
+
+        var imgs = ['icons/s1.png', 'icons/s2.png', 'icons/s3.png', 'icons/s4.png', 'icons/s5.png', 'icons/s6.png',
+            'icons/s7.png', 'icons/s8.png'
+        ];
+        shuffle(imgs);
+        var imgsFinter = imgs.slice(3, imgs.length);
+
+        if (localStorage.locationId == 1) {
+
+            imgsFinter.push('icons/seegiriya.png');
+            shuffle(imgsFinter);
+
+            var container = document.getElementById('imageContainer');
+
+            for (var i = 0, j = imgsFinter.length; i < j; i++) {
+                var aTag = document.createElement('a');
+                var img = document.createElement('img');
+
+                img.src = imgsFinter[i];
+                img.style.width = '160px';
+                img.style.height = '120px';
+                img.style.marginLeft = '8px';
+
+                aTag.id = imgsFinter[i];
+
+                img.onmouseover = function () {
+                    this.style.height = "114px";
+                    this.style.width = "154px";
+                    this.style.border = "3px solid #00FF7F";
+                };
+                img.onmouseout = function () {
+                    this.style.height = "120px";
+                    this.style.width = "160px";
+                    this.style.border = "";
+                };
+
+                aTag.onclick = function () {
+                    var quizId = this.id;
+
+                    if (typeof (Storage) !== "undefined") {
+                        localStorage.quiz01Result = quizId;
+                    }
+                    document.getElementById("btnContinue").disabled = false;
+                };
+                aTag.appendChild(img);
+                container.appendChild(aTag);
+            }
+        } else if (localStorage.locationId == 2) {
+
+            imgsFinter.push('icons/nalandaGedige.png');
+            shuffle(imgsFinter);
+
+            var container = document.getElementById('imageContainer');
+
+            for (var i = 0, j = imgsFinter.length; i < j; i++) {
+                var aTag = document.createElement('a');
+                var img = document.createElement('img');
+
+                img.src = imgsFinter[i];
+                img.style.width = '160px';
+                img.style.height = '120px';
+                img.style.marginLeft = '8px';
+
+                aTag.id = imgsFinter[i];
+
+                img.onmouseover = function () {
+                    this.style.height = "114px";
+                    this.style.width = "154px";
+                    this.style.border = "3px solid #00FF7F";
+                };
+                img.onmouseout = function () {
+                    this.style.height = "120px";
+                    this.style.width = "160px";
+                    this.style.border = "";
+                };
+
+                aTag.onclick = function () {
+                    var quizId = this.id;
+
+                    if (typeof (Storage) !== "undefined") {
+                        localStorage.quiz01Result = quizId;
+                    }
+                    document.getElementById("btnContinue").disabled = false;
+                };
+                aTag.appendChild(img);
+                container.appendChild(aTag);
+            }
+
+        } else if (localStorage.locationId == 3) {
+
+            imgsFinter.push('icons/adamsPeak.png');
+            shuffle(imgsFinter);
+
+            var container = document.getElementById('imageContainer');
+
+            for (var i = 0, j = imgsFinter.length; i < j; i++) {
+                var aTag = document.createElement('a');
+                var img = document.createElement('img');
+
+                img.src = imgsFinter[i];
+                img.style.width = '160px';
+                img.style.height = '120px';
+                img.style.marginLeft = '8px';
+
+                aTag.id = imgsFinter[i];
+
+                img.onmouseover = function () {
+                    this.style.height = "114px";
+                    this.style.width = "154px";
+                    this.style.border = "3px solid #00FF7F";
+                };
+                img.onmouseout = function () {
+                    this.style.height = "120px";
+                    this.style.width = "160px";
+                    this.style.border = "";
+                };
+
+                aTag.onclick = function () {
+                    var quizId = this.id;
+
+                    if (typeof (Storage) !== "undefined") {
+                        localStorage.quiz01Result = quizId;
+                    }
+                    document.getElementById("btnContinue").disabled = false;
+                };
+                aTag.appendChild(img);
+                container.appendChild(aTag);
+            }
+
+        } else {
+
+            imgsFinter.push('icons/templeOfTooth.png');
+            shuffle(imgsFinter);
+
+            var container = document.getElementById('imageContainer');
+
+            for (var i = 0, j = imgsFinter.length; i < j; i++) {
+                var aTag = document.createElement('a');
+                var img = document.createElement('img');
+
+                img.src = imgsFinter[i];
+                img.style.width = '160px';
+                img.style.height = '120px';
+                img.style.marginLeft = '8px';
+
+                aTag.id = imgsFinter[i];
+
+                img.onmouseover = function () {
+                    this.style.height = "114px";
+                    this.style.width = "154px";
+                    this.style.border = "3px solid #00FF7F";
+                };
+                img.onmouseout = function () {
+                    this.style.height = "120px";
+                    this.style.width = "160px";
+                    this.style.border = "";
+                };
+
+                aTag.onclick = function () {
+                    var quizId = this.id;
+
+                    if (typeof (Storage) !== "undefined") {
+                        localStorage.quiz01Result = quizId;
+                    }
+                    document.getElementById("btnContinue").disabled = false;
+                };
+                aTag.appendChild(img);
+                container.appendChild(aTag);
+            }
+
+        }
+
+        function shuffle(a) {
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        function quizOneFunction() {
+
+        }
+
+        function getSession() {
+
+            console.log(localStorage.imgID);
+        }
+
+        $(function () {
+            $("#s_timer").countdowntimer({
+                seconds: 15,
+                size: "sm"
+            });
+        });
+
+        $(document).on("DOMSubtreeModified", "#s_timer", function () {
+           var countDownValue=$('#s_timer').text();
+
+           if(countDownValue=="00:00:00"){
+               console.log("Rasindu De Alwis");
+               location.href='score.html';
+               localStorage.gameover='1';
+           }
+           
+        });
+    </script>
+
+
+</body>
+
+
+</html>
+
+
+
+<!-- 
+// img.addEventListener("mouseenter", function(event) {
+            //     // highlight the mouseenter target
+            //     event.target.style.backgroundColor = "purple";
+
+            //     // reset the color after a short delay
+            //     setTimeout(function() {
+            //         event.target.backgroundColor.color = "";
+            //     }, 500);
+            // }, false);
+
+            // img.addEventListener("mouseover", function(event) {
+            //     // highlight the mouseover target
+            //     event.target.style.backgroundColor = "orange";
+
+            //     // reset the color after a short delay
+            //     setTimeout(function() {
+            //         event.target.style.backgroundColor = "";
+            //     }, 500);
+            // }, false); -->
+
+
+
+
+<!-- $(document).on('pagebeforeshow', '#quiz01', function() {
+alert('My img id is ' + storeObject.imgID);
+xmlhttp = new XMLHttpRequest();
+xmlhttp.open("GET", "session_write.php?q=" + storeObject.imgID, true);
+xmlhttp.send();
+});
+
+$(document).on('pageshow', '#quiz01', function() {
+var id = "<?php echo $_SESSION['quizOneResult']; ?>";
+console.log(id);
+}); -->
+
+
+<!-- <div class="ui-grid-a">
+                <div class="ui-block-a"><a href="#"><img src="icons/s1.png"></a></div>
+                <div class="ui-block-b"><a href="#"><img src="icons/s1.png"></a></div>
+                <div class="ui-block-a"><a href="#"><img src="icons/s1.png"></a></div>
+                <div class="ui-block-b"><a href="#"><img src="icons/s1.png"></a></div>
+                <div class="ui-block-a"><a href="#"><img src="icons/s1.png"></a></div>
+                <div class="ui-block-b"><a href="#"><img src="icons/s1.png"></a></div>
+            </div> -->

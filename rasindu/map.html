@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="./css/main.css" rel="stylesheet" />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4fxzjh0_9j9aIXCecrSeDxBztKU5Lzao&callback=initMap"
+        defer></script>
+
+</head>
+
+
+<body>
+
+    <div data-role="page" id="pageMap">
+
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-update-page-padding="false">
+            <div class="ui-grid-b">
+
+                <div class="ui-block-a">
+
+                </div>
+                <div class="ui-block-b">
+                    <a href="#locationInfo" class="ui-btn-icon-center"><img src="icons/logo.png"></a>
+                </div>
+                <div class="ui-block-c" style="padding-left: 80px;">
+                    <a style="background-color:#0B0451;border: none;" href="#panelArea"
+                        class="ui-btn ui-btn-inline ui-icon-bars ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                </div>
+            </div>
+
+            <div data-role="navbar" data-iconpos="left" class="navBar">
+                <ul class="mainNAV">
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-home ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-grid ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-heart ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-user ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                </ul>
+            </div>
+            <h1 id="subHeaderQuiz" style="padding-left: 60px;">LET'S PLAY</h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+
+            <ul class="srchList" data-role="listview" data-filter="true" data-filter-placeholder="Find designation..."
+                data-filter-theme="a" data-inset="true" style="margin:1%">
+
+                <li class="srch" id="1"><a onclick="location.href='locationinfo.html'"><img src="icons/seegiriya.png">Seegiriya</a></li>
+                <li class="srch" id="2"><a onclick="location.href='locationinfo.html'"><img src="icons/nalandaGedige.png">Nalanda gedige</a></li>
+                <li class="srch" id="3"><a onclick="location.href='locationinfo.html'"><img src="icons/adamsPeak.png">Adams peak</a></li>
+                <li class="srch" id="4"><a onclick="location.href='locationinfo.html'"><img src="icons/templeOfTooth.png">Temple of tooth</a></li>
+
+            </ul>
+
+
+            <!-- the div element for the map -->
+            <div id="map"></div>
+
+        </div>
+
+        <div data-role="footer">
+            <div class="Footer-img"> <img src="../CW/css/images/Footer-imgFixed.png"></div>
+        </div>
+
+    </div>
+
+    <style>
+        .ui-li-has-thumb {
+            height: 43px;
+        }
+
+        .ui-li-has-thumb .ui-btn-icon-right:after {
+            margin-top: -28px;
+        }
+
+        .ui-listview .ui-li-has-thumb>.ui-btn>img {
+            max-width: 100px !important;
+            width: 80px;
+            height: 40px;
+        }
+    </style>
+
+
+
+
+    <script>
+
+        $('li.srch a').on('click', function (e) {
+            e.preventDefault();
+            var id = $(this).parent().attr('id');
+            localStorage.locationId=id;
+        });
+
+
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8,
+                center: { lat: 7.980120578541653, lng: 80.75062627676112 },
+            });
+            setMarkers(map);
+        }
+
+        const campuses = [
+            ["Seegiriya", 7.980120578541653, 80.75062627676112, 1],
+            ["Temple of tooth", 7.293726056999477, 80.64134645435296, 2],
+            ["Nalanda Gedige", 7.669918720101855, 80.64586672551891, 3],
+            ["Nalanda Gedige", 6.8104467318476845, 80.49903813431806, 4],
+        ];
+
+        function setMarkers(map) {
+            //   const image = {
+            // 	src: "icons/seegiriya.png",
+            // 	// This marker is 20 pixels wide by 32 pixels high.
+            // 	size: new google.maps.Size(20, 32),
+            // 	// The origin for this image is (0, 0).
+            // 	origin: new google.maps.Point(0, 0),
+            // 	// The anchor for this image is the base of the flagpole at (0, 32).
+            // 	anchor: new google.maps.Point(0, 32),
+            //   };
+
+            const shape = {
+                coords: [1, 1, 1, 20, 18, 20, 18, 1],
+                type: "poly",
+            };
+
+            for (let i = 0; i < campuses.length; i++) {
+                const beach = campuses[i];
+                new google.maps.Marker({
+                    position: { lat: beach[1], lng: beach[2] },
+                    map,
+                    shape: shape,
+                    title: beach[0],
+                    zIndex: beach[3],
+                });
+            }
+        }
+
+
+    </script>
+
+
+
+</body>
+
+
+</html>

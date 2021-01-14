@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="./css/main.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</head>
+
+<body>
+    <div data-role="page" id="score">
+
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-update-page-padding="false">
+
+            <div class="ui-grid-b">
+
+                <div class="ui-block-a">
+
+                </div>
+                <div class="ui-block-b">
+                    <a href="#locationInfo" class="ui-btn-icon-center"><img src="icons/logo.png"></a>
+                </div>
+                <div class="ui-block-c" style="padding-left: 80px;">
+                    <a style="background-color:#0B0451;border: none;" href="#panelArea"
+                        class="ui-btn ui-btn-inline ui-icon-bars ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                </div>
+            </div>
+
+            <div data-role="navbar" data-iconpos="left" class="navBar">
+                <ul class="mainNAV">
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-home ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-grid ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-heart ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-user ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <p id="subHeaderQuiz">Select images related to
+                the location</p> -->
+            <h1 id="subHeaderQuiz" style="padding-left: 60px;"> COMPLETE</h1>
+
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <div class="ui-block-a">
+
+                 <div id="scoreText" class="ui-body ui-body-a ui-corner-all" style="background:none;border: none;">
+                    <h3 style="padding-left: 85px; margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal"
+                        id="locationName">Congratulations!<br> You have a new<br>high score!</h3>
+                </div>
+
+                 <div id="scoreContainer" class="ui-body ui-body-a ui-corner-all" style="background:none;border: none;">
+                    <!-- <h3 style="padding-left: 95px; margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal"
+                        id="gameScore"><i class="fas fa-crown" style="font-size:25px;color:orange;"></i> 200 <i class="fas fa-crown" style="font-size:25px;color:orange;" ></i></h3> -->
+
+                    <!-- <h3 style="padding-left: 95px; margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal"
+                        id="gameScore"></h3> -->
+                </div>
+
+                <button style="margin-left:34%;width: 60%;" class="ui-btn ui-corner-all" id="btnContinue" onclick="quitGame()">Quit
+                    Game</button>
+
+            </div>
+        </div>
+
+        <div data-role="footer">
+            <div class="Footer-img"> <img src="../CW/css/images/Footer-imgFixed.png"></div>
+        </div>
+
+    </div>
+    <script>
+
+        var container = document.getElementById('scoreContainer');
+        var hTag = document.createElement('h3');
+        var iTag = document.createElement('i');
+        iTag.className = 'fas fa-crown';
+        iTag.style.fontSize = '25px';
+        iTag.style.color = 'orange';
+
+        //  var score = document.createTextNode("200");
+        //  hTag.appendChild(score);
+
+        //  container.app
+        //  container.appendChild(hTag);
+
+        // console.log(localStorage.quiz01Result+" "+localStorage.quiz02Result);
+        var imgs = ['icons/seegiriya.png', 'icons/nalandaGedige.png', 'icons/adamsPeak.png', 'icons/templeOfTooth.png'];
+
+        var score = 50;
+        var isQuiz01Correct = false;
+        var isQuiz02Correct = false;
+        for (var i = 0, j = imgs.length; i < j; i++) {
+            if (imgs[i] == localStorage.quiz01Result) {
+                score = score + 45;
+                isQuiz01Correct = true;
+            }
+        }
+        for (var i = 0, j = imgs.length; i < j; i++) {
+            if (imgs[i] == localStorage.quiz02Result) {
+                score = score + 45;
+                isQuiz02Correct = true;
+            }
+        }
+        localStorage.score = score;
+
+        var gameOver = localStorage.gameover;
+
+        console.log("Game over value :- " + gameOver);
+
+        if (gameOver == '1') {
+            score = 0;
+            $('#subHeaderQuiz').text('GAME OVER');
+            var scoreText = document.getElementById('scoreText');
+            scoreText.innerHTML = '<h3 style="padding-left: 85px; margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal">Please Try Again !!</h3>';
+            container.innerHTML = '<h3 style="padding-left: 112px; margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal"><i class="fa fa-crown" style="font-size:25px;color:orange; aria-hidden="true"></i> ' + score + ' <i class="fa fa-crown" style="font-size:25px;color:orange; aria-hidden="true"></i></h3>';
+
+        } else {
+
+            if (!isQuiz01Correct && !isQuiz02Correct) {
+                score = 0;
+                $('#subHeaderQuiz').text('GAME LOST');
+                var scoreText = document.getElementById('scoreText');
+                scoreText.innerHTML = '<h3 style="padding-left: 85px; margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal">Please Try Again !!</h3>';
+
+                container.innerHTML = '<h3 style="padding-left: 112px; margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal"><i class="fa fa-crown" style="font-size:25px;color:orange; aria-hidden="true"></i> ' + score + ' <i class="fa fa-crown" style="font-size:25px;color:orange; aria-hidden="true"></i></h3>';
+            } else {
+                container.innerHTML = '<h3 style="padding-left: 95px; margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal"><i class="fa fa-crown" style="font-size:25px;color:orange; aria-hidden="true"></i> ' + localStorage.score + ' <i class="fa fa-crown" style="font-size:25px;color:orange; aria-hidden="true"></i></h3>';
+            }
+
+        }
+
+        function quitGame(){
+            localStorage.gameover=0;
+            localStorage.score=0;
+            location.href = 'map.html';
+        }
+
+
+    </script>
+
+</body>

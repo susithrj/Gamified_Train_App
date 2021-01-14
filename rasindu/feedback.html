@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <!-- <link href="./css/main.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</head>
+
+<body>
+    <div data-role="page" id="feedback">
+
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-update-page-padding="false">
+
+            <div class="ui-grid-b">
+
+                <div class="ui-block-a">
+
+                </div>
+                <div class="ui-block-b">
+                    <a href="#locationInfo" class="ui-btn-icon-center"><img src="icons/logo.png"></a>
+                </div>
+                <div class="ui-block-c" style="padding-left: 80px;">
+                    <a style="background-color:#0B0451;border: none;" href="#panelArea"
+                        class="ui-btn ui-btn-inline ui-icon-bars ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                </div>
+            </div>
+
+            <div data-role="navbar" data-iconpos="left" class="navBar">
+                <ul class="mainNAV">
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-home ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-grid ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-heart ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                    <li><a style="background-color: #2D2A91;" href="#panelArea"
+                            class="ui-btn ui-btn-inline ui-icon-user ui-btn-icon-notext ui-shadow ui-coner-all"></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <p id="subHeaderQuiz">Select images related to
+                the location</p> -->
+            <h1 id="subHeaderQuiz" style="padding-left: 60px;">FEEDBACK</h1>
+
+        </div>
+
+        <div data-role="main" class="ui-content">
+
+
+            <div class="ui-grid-solo">
+                <!-- <div class="ui-block-a"> -->
+
+                 <div id="feedbackHeaderText" class="ui-body ui-body-a ui-corner-all">
+                    <h3 style="margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal">Submit your
+                        review!</h3>
+                          <p id="locationMoreInfo"
+                        style="margin:0%;color: whitesmoke;font-family: system-ui;font-weight: normal">We hope you enjoy
+                        a good experience after visiting our restaurant. For comments, compliments or questions, please
+                        write them below</p>
+                </div>
+
+                <!-- </div> -->
+            </div>
+
+            <div class="ui-grid-solo" style="padding-top:12px;;">
+                <h3 style="margin:0%;color:purple;font-family: system-ui;font-weight: normal">How was your experience?
+                </h3>
+
+                <div class="rating-container" style="padding-top:16px;">
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+
+            </div>
+
+            <div class="ui-grid-solo" style="padding-top:12px;">
+                <h3 style="margin:0%;color:purple;font-family: system-ui;font-weight: normal">How was your experience?
+                </h3>
+                 <textarea data-mini="true" cols="40" rows="8" name="textarea-4" id="textarea-4"></textarea>
+            </div>
+
+            <div class="ui-grid-solo" style="padding-top:12px;">
+                <h3 style="margin:0%;color:purple;font-family: system-ui;font-weight: normal">How satisfied you are?
+                </h3>
+                <div class="rating-container" style="padding-top:12px;">
+                    <!-- <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i> -->
+                    <div class="satis"><p style="margin-left:16px;">Less</p></div>
+                    <div class="satis"><p style="margin-left:6px;">Enough</p></div>
+                    <div class="satis"><p style="margin-left:16px;">Very</p></div>
+                </div>
+            </div>
+
+            <button style="margin-left:17%;width: 60%;margin-top:24px;" class="ui-btn ui-corner-all" id="btnContinue" onclick="location.href='map.html'">Back to Menu</button>
+
+        </div>
+
+        <div data-role="footer">
+            <div class="Footer-img"> <img src="../CW/css/images/Footer-imgFixed.png"></div>
+        </div>
+
+    </div>
+
+    <script>
+        $('.rating-container .fa-star').click(function () {
+            $('.rating-container .fa-star').removeClass('active');
+            $(this).prevAll('.fa-star').addBack().addClass('active');
+        });
+
+        $('.rating-container .satis').click(function () {
+            $('.rating-container .satis').removeClass('activeSatis');
+            $(this).click('.satis').addClass('activeSatis');
+        });
+    </script>
+
+
+    <style>
+        .fa-star {
+            /* display: inline-block; */
+            /* width: 10px;
+            height: 10px; */
+            color: silver;
+            margin: 3px;
+            font-size: 30px;
+
+        }
+
+        .active {
+            color: orange;
+        }
+
+        .satis {
+            display: inline-block;
+            width: 68px;
+            height: 40px;
+            /* background-color: silver; */
+            margin: 3px;
+            box-shadow: 0px 4px 5px -3px #888;
+        }
+
+        .activeSatis {
+            /* background-color: #C00; */
+            border: solid purple 1px;
+            box-shadow: 0px 4px 5px -3px #888;
+            /* border-color: purple; */
+        }
+
+
+        #feedbackHeaderText {
+            background: linear-gradient(rgba(10, 3, 80, 1), rgba(11, 4, 79, 0.7099999785423279));
+            /* box-shadow: 0px 4px 5px -3px #888; */
+        }
+
+        .ui-page .ui-header {
+            background: linear-gradient(rgba(10, 3, 80, 1), rgba(11, 4, 79, 0.7099999785423279));
+        }
+
+        .btn span.icon {
+            background: url(imgs/icon.png) no-repeat;
+            float: left;
+            width: 10px;
+            height: 40px;
+        }
+
+        div ul.mainNAV li a {
+            width: 90px;
+            height: 35px;
+            border-radius: 12px;
+            margin-top: 8px;
+        }
+
+
+        #btnContinue {
+            background-color: #9B6CFF;
+            color: white;
+            border-radius: 20px;
+            font-weight: normal;
+            font-family: sans-serif
+        }
+
+        #subHeaderQuiz {
+            color: white;
+            margin-left: 50px;
+            font-family: system-ui;
+            font-weight: normal;
+        }
+    </style>
+
+</body>
+
+</html>
